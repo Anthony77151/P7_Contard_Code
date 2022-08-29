@@ -13,10 +13,15 @@ Dans le dossier **back** du projet, ouvrir un terminal, puis rentré **npm insta
 A la racine du dossier back créer un fichier **.env** et y copier les informations suivante :
 
 PORT=5000
+
 DB_PASSWORD=PwH3atY9j2Kegw5P
+
 DB_USER=Anthony
+
 TOKEN_SECRET=TefVE3iA5264fz99XgvP
+
 CLIENT_URL=http://localhost:3000
+
 
 Puis toujours dans le terminal lancer **nodemon**.
 
@@ -36,4 +41,5 @@ Un fois tout cela, dans le terminal lancé **npm start**.
 Un compte **modérateur** est à votre disposition (possédant le rôle d'administrateur)
 
 Email : modo@gmail.com
+
 Mdp : 123456
