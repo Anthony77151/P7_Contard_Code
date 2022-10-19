@@ -1,4 +1,4 @@
-# Porjet 7 OpenClassrooms : Groupomania 
+# Projet 7 OpenClassrooms : Groupomania 
 
 Pour ce projet il me fallait produire une première version d'un réseaux social pour l'entreprise **Groupomania**.
 Pour ce faire il fallait que je parte de 0, étant assez libre dans mes choix de technologie, j'ai décider de partir sur un projet dit MERN (Mongo, express, react et nodejs).
