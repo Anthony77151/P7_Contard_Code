@@ -12,11 +12,34 @@ module.exports.userInfo = (req, res) => {
     // Vérifie que l'id est valide
     if (!ObjectID.isValid(req.params.id))
         return res.status(400).send('ID unknown : ' + req.params.id);
-// Recherche l'utilisateur par son id (docs = data/response)
+    // Recherche l'utilisateur par son id (docs = data/response)
     UserModel.findById(req.params.id, (err, docs) => {
         if (!err) res.send(docs);
         else console.log('ID unknown : ' + err);
     }).select('-password');
+}
+
+// update un utilisateur
+module.exports.updateUser = async (req, res) => {
+    if (!ObjectID.isValid(req.params.id))
+        return res.status(400).send('ID unknown : ' + req.params.id);
+    try {
+        await UserModel.findOneAndUpdate(
+            { _id: req.params.id },
+            {
+                $set: {
+                    bio: req.body.bio
+                }
+            },
+            { new: true, upsert: true, setDefaultsOnInsert: true},
+            (err , docs) => {
+                if (!err) return res.send(docs);
+                if (err) return res.status(500).send({message: err})
+            }
+        )
+    } catch(err) {
+        return res.status(500).json({message: err})
+    }
 }
 
 // Supprimer un utilisateur
