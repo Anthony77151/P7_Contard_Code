@@ -41,7 +41,7 @@ module.exports.createPost = async (req, res) => {
         await pipeline(
             req.file.stream,
             fs.createWriteStream(
-                `${__dirname}/../../front/public/images/${fileName}`
+                `${__dirname}/../../front/public/images/posts${fileName}`
             ),
         );
     }
@@ -49,7 +49,7 @@ module.exports.createPost = async (req, res) => {
     const newPost = new PostModel({
         posterId: req.body.posterId,
         message: req.body.message,
-        picture: req.file !== null ? "./images/" + fileName : "",
+        picture: req.file !== null ? "./images/posts" + fileName : "",
         video: req.body.video,
         likers: [],
         comments: []
@@ -95,8 +95,8 @@ module.exports.deletePost = (req, res) => {
 
 // supprime l'image du produit
 function deleteImage(post) {
-    const filename = post.picture.split("/images")[1];
-    fs.unlink(`../front/public/images/${filename}`, (error) => {
+    const filename = post.picture.split("/images/posts")[1];
+    fs.unlink(`../front/public/images/posts${filename}`, (error) => {
         if(error) {
             console.log(error);
         }

@@ -29,4 +29,18 @@ module.exports.uploadProfil = async (req, res) => {
             `${__dirname}/../../front/public/images/profil/${fileName}`
         ),
     );
+
+    try {
+        await UserModel.findByIdAndUpdate(
+            req.body.userId,
+            { $set: { picture: "./images/profil/" + file } },
+            { new: true, upsert: true, setDefaultsOnInsert: true },
+            (err, docs) => {
+                if (!err) return res.send(docs);
+                else return res.status(500).send({ message: err });
+            }
+        );
+    } catch (err) {
+        return res.status(500).send({ message: err });
+    }
 }

@@ -23,6 +23,10 @@ const userSchema = new mongoose.Schema({
         required: true,
         minlength: 6,
     },
+    pictures: {
+        type: String,
+        default: "./images/profil/profil-picture.webp"
+    },
     bio :{
         type: String,
         max: 1024,
